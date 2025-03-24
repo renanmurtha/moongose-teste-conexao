@@ -1,0 +1,17 @@
+{
+  "name": "moongose-teste-conexao",
+  "version": "1.0.0",
+  "description": "Teste de Conexão com MongoDB usando Mongoose",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^9.6.0",  
+    "dotenv": "^16.4.7",
+    "mongoose": "^8.12.2"
+  },
+  "author": "",
+  "license": "MIT"
+}
