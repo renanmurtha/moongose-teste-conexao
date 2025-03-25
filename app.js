@@ -1,14 +1,14 @@
 import mongoose from 'mongoose';
 import dbConnect from './config/database.js';
+import evn from './config/env.js';
 import { faker } from '@faker-js/faker';
-
-const shouldDeleteUser = false; 
 
 /*
 A variável shouldDeleteUser controla se o usuário será deletado.
 true → Usuário será deletado.
 false → Usuário não será deletado.
 */
+const shouldDeleteUser = false; 
 
 try {
     const start = Date.now();
@@ -34,7 +34,7 @@ try {
         next();
     });
 
-    const TesteUser = mongoose.model("TesteUser", userSchema);
+    const TesteUser = mongoose.model(evn.mongoDBCollectionName, userSchema);
 
     const user = new TesteUser({
         name: faker.person.fullName(),

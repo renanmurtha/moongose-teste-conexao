@@ -14,7 +14,7 @@ Este projeto tem como objetivo testar a conexão com o MongoDB utilizando Mongoo
 - [MongoDB](https://www.mongodb.com/) (local ou na nuvem).
 - [npm](https://www.npmjs.com/) ou [yarn](https://yarnpkg.com/).
 
-## Configuração
+## Instalação e Configuração
 
 1. Clone este repositório:
 ```bash
@@ -41,6 +41,12 @@ MONGO_DB_CLOUD_ATLAS=false
 # Mude variavel MONGO_DB_CLOUD_ATLAS para true. MONGO_DB_CLOUD_ATLAS=true
 # Se utilizar MongoDB em HomeLab ou Servidor, configure a variável MONGO_DB_URI corretamnete.
 ```
+
+4. Deletar usuário criado ao fim da excução do programa
+
+Em app.js, a variável shouldDeleteUser controla se o usuário será deletado.
+true → Usuário será deletado.
+false → Usuário não será deletado.
 
 ## Executando o Projeto
 
@@ -78,10 +84,29 @@ npm run start
 └── README.md
 ```
 
-## Observações
+## Extra
 
-- Verifique se o MongoDB está rodando e acessível conforme configurado.
-- Para usar o MongoDB Atlas, ajuste as variáveis do arquivo **.env** conforme necessário.
+Para criar um usuário no MongoDB, você pode seguir os passos abaixo:
+
+## Comandos executados no console no MongoCompass
+  ```bash
+      mongo -u admin
+
+      # Acesse ao banco, mesmo nome que nome que esta na variavel MONGO_DB_NAME em .env
+
+      use teste_crud
+
+      # Em user, escolha o nome do usuário da aplicação, neste exemplo será: teste_crud 
+      # Em pwd, troque "youPass" e coloque uma senha mais forte
+      # As regras para este usuário, será readWrite, que server para fazer o crud
+
+      db.createUser({user: "teste_crud",pwd: "youPass",roles: ["readWrite"]})
+      
+      # O primeiro "teste_crud", é o nome do usuário mude caso no comando anterior tenha mudado o nome do usuário
+      # O segundo, que esta em db, muda para o mesmo que esta na varivel MONGO_DB_NAME em .env
+
+      db.grantRolesToUser("teste_crud",[{ role: "readWrite", db: "teste_crud" }])
+  ```
 
 ## Licença
 
