@@ -45,8 +45,8 @@ MONGO_DB_CLOUD_ATLAS=false
 4. Deletar usuário criado ao fim da excução do programa
 
 Em app.js, a variável shouldDeleteUser controla se o usuário será deletado.
-true → Usuário será deletado.
-false → Usuário não será deletado.
+- true → Usuário será deletado.
+- false → Usuário não será deletado.
 
 ## Executando o Projeto
 
